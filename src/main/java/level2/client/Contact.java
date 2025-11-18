@@ -15,11 +15,8 @@ public class Contact {
     }
 
 
-
-    public String paintContact(){
-
+    @Override
+    public String toString() {
         return "Address: "+address.format()+" | Phone: "+phone.format();
-
     }
-
 }

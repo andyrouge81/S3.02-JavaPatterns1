@@ -24,6 +24,7 @@ public class Undo {
         return instance;
 
     }
+
     public void addCommand(String command){
         if(command.isBlank()){
             throw new IllegalArgumentException("Write a computer command...");
@@ -44,6 +45,7 @@ public class Undo {
     public String showLastCommand(){
         return stackCommands.peek();
     }
+
     public boolean showEmpty(){
         return stackCommands.isEmpty();
     }

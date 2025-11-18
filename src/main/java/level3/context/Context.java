@@ -10,6 +10,7 @@ public class Context {
 
 
     public void setStrategy(ReportStrategy strategy) {
+
         this.strategy = strategy;
     }
 

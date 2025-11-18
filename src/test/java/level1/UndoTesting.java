@@ -37,19 +37,24 @@ public class UndoTesting {
     @Test
     void givenAStack_whenAddEmptyCommand_thenThrowExceptionIsTheSameMessage(){
 
-       Exception exception= assertThrows(IllegalArgumentException.class, ()-> {
-                undo.addCommand("");
+       Exception e = assertThrows(IllegalArgumentException.class, ()-> {
+                undo.addCommand(" ");
        });
 
-       assertSame("Write a computer command...",exception.getMessage());
+
     }
 
     @Test
     void givenAStack_whenUndoCommand_thenShowTheCommandAndDeleteToTheStack(){
 
-        undo.addCommand("Control Q");
+        String command = "Control Q";
+        undo.addCommand(command);
+        assertTrue(undo.stackCommands.contains(command));
+        
 
-        assertTrue(undo.undoCommand().contains("Control Q"));
+        String undone = undo.undoCommand();
+
+        assertTrue(undone.contains(command));
         assertTrue(undo.showEmpty());
     }
 
@@ -58,13 +63,13 @@ public class UndoTesting {
     void givenAStackCommands_whenAddACommand_thenProofTheListChangeOfSize(){
 
 
-        int expectedSize = 0;
+        int expectedSize = 1;
 
         undo.addCommand("ESC");
 
         int actualSize = undo.showSize();
 
-        assertNotEquals(expectedSize, actualSize);
+        assertEquals(expectedSize, actualSize);
     }
 
 

@@ -2,9 +2,7 @@ package level2.concreteFactory;
 
 import level2.concreteProducts.UsaAddress;
 import level2.concreteProducts.UsaPhone;
-import level2.abstractProducts.Address;
 import level2.abstractFactory.ContactFactory;
-import level2.abstractProducts.Phone;
 
 public class USAContactFactory implements ContactFactory {
 
@@ -23,13 +21,13 @@ public class USAContactFactory implements ContactFactory {
 
 
     @Override
-    public Address createAddress(){
-        return new UsaAddress(address,city,zipCode);
+    public UsaAddress createAddress(){
+        return new UsaAddress(address, city, zipCode);
     }
 
 
     @Override
-    public Phone createPhone(){
+    public UsaPhone createPhone(){
         return new UsaPhone(phoneNumber);
 
     }

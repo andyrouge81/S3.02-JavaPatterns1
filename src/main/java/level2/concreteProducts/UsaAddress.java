@@ -15,6 +15,7 @@ public class UsaAddress implements Address {
     }
 
     public String format(){
+
         return address+", "+city+", "+zipCode;
     }
 }

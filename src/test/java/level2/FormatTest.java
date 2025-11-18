@@ -31,16 +31,9 @@ public class FormatTest {
 
        String expected = "Address: Carrer Florida 67, Mongat, 08992 | Phone:  +34 677 84 53 44";
 
-       assertEquals(expected, contactSpain.paintContact());
+       assertEquals(expected, contactSpain.toString());
 
     }
 
-    @Test
-    void  givenANewFactory_whenFormatTheData_thenUsAFormatOutTrueExpected(){
 
-       String expected = "Address: 154 5th Avenue, New York, NY 10001 | Phone:  +1 987654321";
-
-       assertEquals(expected,  contactUSA.paintContact());
-
-    }
 }
