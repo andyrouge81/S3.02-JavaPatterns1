@@ -8,20 +8,27 @@ public class Context {
 
     private ReportStrategy strategy;
 
+    public Context(ReportStrategy strategy) {
+        setStrategy(strategy);
 
-    public void setStrategy(ReportStrategy strategy) {
+    }
+
+    public void setStrategy(ReportStrategy strategy){
+
+        if(strategy == null){
+            throw new IllegalArgumentException("Strategy cannot be null");
+        }
 
         this.strategy = strategy;
     }
 
 
+
     public String executeReport(String filename){
-        if(strategy == null){
-            throw new IllegalStateException("No strategy implemented");
+        if(filename == null || filename.isBlank()){
+            throw new IllegalArgumentException("No strategy implemented");
         }
-        if(filename.isBlank()){
-            throw new IllegalArgumentException(("No name file"));
-        }
+
 
         return strategy.generateReport(new File(filename));
     }

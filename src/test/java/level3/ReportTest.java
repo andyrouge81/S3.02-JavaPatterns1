@@ -3,7 +3,6 @@ package level3;
 
 import level3.context.Context;
 import level3.strategy.ReportStrategy;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -16,19 +15,13 @@ public class ReportTest {
     private Context context;
 
 
-    @BeforeEach
-    void setup() {
-
-        context = new Context();
-
-    }
 
 
     @Test
     void testGenerateHTMLReport() {
         String fileName = "testHtml";
 
-        context.setStrategy(ReportStrategy.generateHTML());
+        context= new Context(ReportStrategy.generateHTML());
         context.executeReport(fileName);
 
         File htmlGenerated = new File("src/main/resources/" + fileName + ".html");
@@ -40,7 +33,7 @@ public class ReportTest {
     void testGenerateJsonReport() {
         String fileName = "testJson";
 
-        context.setStrategy(ReportStrategy.generateJson());
+        context= new Context(ReportStrategy.generateJson());
         context.executeReport(fileName);
 
         File jsonGenerated = new File("src/main/resources/" + fileName + ".json");
@@ -52,7 +45,7 @@ public class ReportTest {
     void testGenerateXMLReport() {
         String fileName = "testXml";
 
-        context.setStrategy(ReportStrategy.generateXLM());
+        context = new Context(ReportStrategy.generateXLM());
         context.executeReport(fileName);
 
         File xmlGenerated = new File("src/main/resources/" + fileName + ".xml");
@@ -65,7 +58,7 @@ public class ReportTest {
     void testGeneratePDFReport() {
         String fileName = "testPDF";
 
-        context.setStrategy(ReportStrategy.generatedPDF());
+        context = new Context(ReportStrategy.generatedPDF());
         context.executeReport(fileName);
 
         File pdfGenerated = new File("src/main/resources/" + fileName + ".pdf");
@@ -77,7 +70,7 @@ public class ReportTest {
     @Test
     void testGenerateExcelReport() {
         String fileName = "testExcel";
-        context.setStrategy(ReportStrategy.generatedExcel());
+        context = new Context(ReportStrategy.generatedExcel());
         context.executeReport(fileName);
 
         File excelGenerated = new File("src/main/resources/" + fileName + ".xlsm");
@@ -89,7 +82,7 @@ public class ReportTest {
     void testGenerateCSVReport() {
 
         String fileName = "testCSV";
-        context.setStrategy(ReportStrategy.generatedCSV());
+        context = new Context(ReportStrategy.generatedCSV());
         context.executeReport(fileName);
 
         File csvGenerated = new File("src/main/resources/" + fileName + ".csv");
@@ -100,7 +93,8 @@ public class ReportTest {
     @Test
     void testGenerateWordReport() {
         String fileName = "testWord";
-        context.setStrategy(ReportStrategy.generatedWord());
+
+        context = new Context(ReportStrategy.generatedWord());
         context.executeReport(fileName);
 
         File wordGenerated = new File("src/main/resources/" + fileName + ".doc");
